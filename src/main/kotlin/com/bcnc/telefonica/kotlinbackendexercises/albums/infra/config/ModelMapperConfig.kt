@@ -12,7 +12,7 @@ class ModelMapperConfig {
     fun modelMapper(): ModelMapper {
         val modelMapper = ModelMapper()
         // Optional: Configure the model mapper as per your needs
-        modelMapper.configuration.matchingStrategy = MatchingStrategies.STRICT
+        modelMapper.configuration.matchingStrategy = MatchingStrategies.LOOSE
         return modelMapper
     }
 }

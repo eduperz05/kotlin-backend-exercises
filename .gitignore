@@ -4,6 +4,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+
+### Jacoco report files
+**/static/jacoco/*
+
 ### STS ###
 .apt_generated
 .classpath
