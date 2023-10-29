@@ -47,8 +47,8 @@ docker-compose up
 
 ## API Documentation
 
-API documentation is available at [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html).
-Test coverage is available at [http://localhost:8080/jacoco/index.html](http://localhost:8080/jacoco/index.html).
+- API documentation is available at [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html).
+- Test coverage is available at [http://localhost:8080/jacoco/index.html](http://localhost:8080/jacoco/index.html).
 
 ## Improvements and Features
 
