@@ -1,12 +1,15 @@
-package com.bcnc.telefonica.kotlinbackendexercises.albums.application.service
+package com.bcnc.telefonica.kotlinbackendexercises.albums.unit.service
 
 import com.bcnc.telefonica.kotlinbackendexercises.albums.application.repository.AlbumRepository
+import com.bcnc.telefonica.kotlinbackendexercises.albums.application.service.AlbumService
 import com.bcnc.telefonica.kotlinbackendexercises.albums.domain.model.Album
 import com.bcnc.telefonica.kotlinbackendexercises.albums.domain.model.Photo
+import com.bcnc.telefonica.kotlinbackendexercises.albums.infra.exception.AlbumNotFound
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
@@ -45,13 +48,16 @@ class AlbumServiceTest {
     }
 
     @Test
-    fun `getPhotosByAlbumId returns an empty list when no photos are found for an album`() {
+    fun `getPhotosByAlbumId throws AlbumNotFound when no photos are found for an album`() {
         `when`(albumRepository.fetchPhotosByAlbumId(1)).thenReturn(emptyList())
 
-        val result = albumService.getPhotosByAlbumId(1)
+        val exception = assertThrows<AlbumNotFound> {
+            albumService.getPhotosByAlbumId(1)
+        }
 
-        assertTrue(result.isEmpty())
+        assertEquals("No photos found for album ID: 1", exception.message)
     }
+
 
     @Test
     fun `getPhotosByAlbumId returns a list of photos for a specific album`() {

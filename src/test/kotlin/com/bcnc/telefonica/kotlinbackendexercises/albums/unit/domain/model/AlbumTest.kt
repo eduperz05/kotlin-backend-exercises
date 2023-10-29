@@ -1,5 +1,6 @@
-package com.bcnc.telefonica.kotlinbackendexercises.albums.domain.model
+package com.bcnc.telefonica.kotlinbackendexercises.albums.unit.domain.model
 
+import com.bcnc.telefonica.kotlinbackendexercises.albums.domain.model.Album
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
