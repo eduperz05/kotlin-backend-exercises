@@ -6,5 +6,13 @@ data class Photo(
     val title: String,
     val url: String,
     val thumbnailUrl: String
-)
+) {
+    fun belongsToAlbum(albumId: Int): Boolean {
+        return this.albumId == albumId
+    }
+
+    fun hasValidUrl(): Boolean {
+        return url.startsWith("http://") || url.startsWith("https://")
+    }
+}
 

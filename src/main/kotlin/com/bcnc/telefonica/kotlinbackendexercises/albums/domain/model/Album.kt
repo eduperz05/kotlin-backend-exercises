@@ -4,4 +4,8 @@ data class Album(
     val userId: Int,
     val id: Int,
     val title: String
-)
+) {
+    fun belongsToUser(userId: Int): Boolean {
+        return this.userId == userId
+    }
+}
