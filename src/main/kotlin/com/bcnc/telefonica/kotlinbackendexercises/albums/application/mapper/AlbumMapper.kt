@@ -2,15 +2,21 @@ package com.bcnc.telefonica.kotlinbackendexercises.albums.application.mapper
 
 import com.bcnc.telefonica.kotlinbackendexercises.albums.domain.dto.AlbumDto
 import com.bcnc.telefonica.kotlinbackendexercises.albums.domain.model.Album
-import org.modelmapper.ModelMapper
 
-class AlbumMapper(private val modelMapper: ModelMapper) {
+object AlbumMapper {
 
-    fun mapToAlbum(album: AlbumDto): Album {
-        return modelMapper.map(album, Album::class.java)
+    fun mapToAlbum(albumDto: AlbumDto, userId: Int): Album {
+        return Album(
+            userId = userId,
+            id = albumDto.id,
+            title = albumDto.title
+        )
     }
 
     fun mapToAlbumDto(album: Album): AlbumDto {
-        return modelMapper.map(album, AlbumDto::class.java)
+        return AlbumDto(
+            id = album.id,
+            title = album.title
+        )
     }
 }

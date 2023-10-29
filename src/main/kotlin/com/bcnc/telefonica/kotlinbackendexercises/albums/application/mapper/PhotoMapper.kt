@@ -5,14 +5,24 @@ import com.bcnc.telefonica.kotlinbackendexercises.albums.domain.model.Photo
 import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Component
 
-@Component
-class PhotoMapper(private val modelMapper: ModelMapper) {
+object PhotoMapper {
 
-    fun mapToPhoto(photo: PhotoDto): Photo {
-        return modelMapper.map(photo, Photo::class.java)
+    fun mapToPhoto(photoDto: PhotoDto, albumId: Int): Photo {
+        return Photo(
+            albumId = albumId,
+            id = photoDto.id,
+            title = photoDto.title,
+            url = photoDto.url,
+            thumbnailUrl = photoDto.thumbnailUrl
+        )
     }
 
     fun mapToPhotoDto(photo: Photo): PhotoDto {
-        return modelMapper.map(photo, PhotoDto::class.java)
+        return PhotoDto(
+            id = photo.id,
+            title = photo.title,
+            url = photo.url,
+            thumbnailUrl = photo.thumbnailUrl
+        )
     }
 }
