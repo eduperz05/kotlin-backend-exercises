@@ -1,24 +1,21 @@
 package com.bcnc.telefonica.kotlinbackendexercises.albums.application.service
 
+import com.bcnc.telefonica.kotlinbackendexercises.albums.application.repository.AlbumRepository
 import com.bcnc.telefonica.kotlinbackendexercises.albums.domain.model.Album
 import com.bcnc.telefonica.kotlinbackendexercises.albums.domain.model.Photo
+import com.bcnc.telefonica.kotlinbackendexercises.albums.domain.usecase.GetInfoFromAlbums
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
 
 
 @Service
-class AlbumService {
+class AlbumService(private val albumRepository: AlbumRepository) : GetInfoFromAlbums {
 
-    private val restTemplate = RestTemplate()
-    private val baseUrl = "https://jsonplaceholder.typicode.com"
-
-    fun getAllAlbums(): List<Album> {
-        val url = "$baseUrl/albums"
-        return restTemplate.getForObject(url, Array<Album>::class.java)?.toList() ?: emptyList()
+    override fun getAllAlbums(): List<Album> {
+        return albumRepository.fetchAllAlbums()
     }
 
-    fun getPhotosByAlbumId(albumId: Int): List<Photo> {
-        val url = "$baseUrl/albums/$albumId/photos"
-        return restTemplate.getForObject(url, Array<Photo>::class.java)?.toList() ?: emptyList()
+    override fun getPhotosByAlbumId(albumId: Int): List<Photo> {
+        return albumRepository.fetchPhotosByAlbumId(albumId)
     }
 }
