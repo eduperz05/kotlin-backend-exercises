@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class AlbumIntegrationTest {
+class AlbumControllerIntegrationTest {
 
     @Autowired
     private lateinit var mockMvc: MockMvc

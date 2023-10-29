@@ -61,7 +61,8 @@ class AlbumServiceTest {
 
     @Test
     fun `getPhotosByAlbumId returns a list of photos for a specific album`() {
-        val mockPhotos = listOf(Photo(1, 1, "Test Photo", "http://example.com/photo.jpg", "http://example.com/thumb.jpg"))
+        val mockPhotos = listOf(Photo(1, 1, "Test Photo", "http://example.com/photo.jpg",
+            "http://example.com/thumb.jpg"))
         `when`(albumRepository.fetchPhotosByAlbumId(1)).thenReturn(mockPhotos)
 
         val result = albumService.getPhotosByAlbumId(1)
